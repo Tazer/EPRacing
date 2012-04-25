@@ -4,11 +4,268 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/Site.css" />
+    <!--[if IE 6]><script type="text/javascript" src="http://deathtoie6.com/ie6-not-supported.js" ></script><![endif]-->
+    @*    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
     <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
-    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>
+    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>*@
 </head>
 <body>
+    <div id="header">
+        <div class="span12">
+            <div class="logo">
+                <a href=".">
+                    <img src="/Content/images/tinyshop/logo.png" alt="" /></a>
+            </div>
+            <ul class="nav nav-pills">
+                <li class="dropdown" id="menu1"><a class="dropdown-toggle" data-toggle="dropdown"
+                    href="#menu1">Sort by category <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 2</a></li>
+                        <li><a href="#">Category 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a class="shopBtn" href="#modalCart"><span class="label label-info">0</span></a>
+            <div class="hero-unit">
+                <h1>Välkommen till EP Racing</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et odio eu nisi
+                    porta pulvinar. Donec quam massa, sollicitudin vitae venenatis vitae, blandit nec
+                    magna. In lobortis, metus a fringilla euismod, leo nulla luctus dolor</p>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div class="span12">
+            <div class="span9">
+                <div class="mainContent">
+                    <h2>Hot Products</h2>
+                    <ul class="thumbnails">
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/1.jpg">
+                                <div class="caption">
+                                    <h5>Item 1</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/1.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="1">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 10</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/2.jpg">
+                                <div class="caption">
+                                    <h5>Item 2</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/2.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="2">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 15</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/3.jpg">
+                                <div class="caption">
+                                    <h5>Item 3</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/3.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="3">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 5</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/4.jpg">
+                                <div class="caption">
+                                    <h5>Item 4</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/4.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="4">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 33</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/5.jpg">
+                                <div class="caption">
+                                    <h5>Item 5</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/5.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="5">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 6</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/6.jpg">
+                                <div class="caption">
+                                    <h5>Item 6</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/6.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="6">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 41</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/7.jpg">
+                                <div class="caption">
+                                    <h5>Item 7</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/7.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="7">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 9.99</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/8.jpg">
+                                <div class="caption">
+                                    <h5>Item 8</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/8.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="8">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 3.16</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <img alt="" src="/Content/images/tinyshop/assets/9.jpg">
+                                <div class="caption">
+                                    <h5>Item 9</h5>
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+                                        porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                    <p><a class="btn primary details" href="#" rel="ajax/9.html"><i class="icon-zoom-in">
+                                    </i></a><a class="btn addto" href="#" rel="9">Add to <i class="icon-shopping-cart"></i>
+                                    </a><span class="label label-info price">$ 8</span></p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pagination">
+                        <ul>
+                            <li><a href="#">Prev</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="span3" id="rightside">
+                <form action="" method="post" name="search">
+                <input type="text" placeholder="Search..." />
+                </form>
+                <div class="page-header">
+                    <h3>Tweet , Like &amp; Share this</h3>
+                </div>
+                <p>
+                    <a href="#">
+                        <img src="/Content/images/tinyshop/nl_twitter.png" alt=""></a><a href="#">
+                            <img src="/Content/images/tinyshop/nl_facebook.png" alt=""></a><a href="#">
+                                <img src="/Content/images/tinyshop/nl_gplus.png" alt=""></a>
+                </p>
+                <div class="page-header">
+                    <h3>Promotion</h3>
+                </div>
+                <p>facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+                    Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <div class="page-header">
+                    <h3>Best Items</h3>
+                </div>
+                <div class="thumbnail">
+                    <img alt="" src="/Content/images/tinyshop/assets/1.jpg">
+                    <div class="caption">
+                        <p><a class="btn primary details" href="#" rel="ajax/1.html"><i class="icon-zoom-in">
+                        </i></a><a class="btn addto" href="#" rel="1">Add to <i class="icon-shopping-cart"></i>
+                        </a><span class="label label-info price">$ 10</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer ">
+        <div class="span12">
+            <p class="pull-right"><a href="#" id="goTop">Back to top</a></p>
+            <p>egestas eget quam. Donec id elit non mi porta gravida at eget metus <a target="_blank"
+                href="#">EP Racing</a>- <a href="mailto:zied.hosni.mail@gmail.com">contact</a>.
+            </p>
+            <p>&COPY; 2012</p>
+        </div>
+    </footer>
+    <!-- popin -->
+    <div id="modal">
+        <div class="modal">
+        </div>
+    </div>
+    <div id="modalCart">
+        <div class="modal">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>My Cart</h3>
+            </div>
+            <div class="modal-body">
+                <table class="table cartTab">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <span class="label label-info price">Total : $ <span id="amount">0</span></span>
+                <a class="btn buyNow" href="http://paypal.com" target="blank">Buy Now <i class="icon-ok">
+                </i></a>
+            </div>
+        </div>
+    </div>
+    <div class="span4 alertAdd">
+        <div class="alert alert-info">
+            Added to your cart
+        </div>
+    </div>
+    <!-- popin -->
     @RenderBody()
+    <script type="text/javascript" src="/Scripts/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout-2.0.0.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/modernizr-2.0.6-development-only.js"></script>
+    <script type="text/javascript" src="/Scripts/scripts.js"></script>
 </body>
 </html>
