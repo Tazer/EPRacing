@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F585EDCA-FD6E-4FF3-95B3-B05C68092F0A}</ProjectGuid>
+    <ProjectGuid>{5AAFE9FE-871F-4D14-BBBD-40109D36BD3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EPRacing</RootNamespace>

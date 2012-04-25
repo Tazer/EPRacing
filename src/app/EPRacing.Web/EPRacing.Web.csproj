@@ -204,8 +204,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\EPRacing\EPRacing.csproj">
-      <Project>{f585edca-fd6e-4ff3-95b3-b05c68092f0a}</Project>
+    <ProjectReference Include="..\EPRacing\EPRacing.csproj">
+      <Project>{5aafe9fe-871f-4d14-bbbd-40109d36bd3b}</Project>
       <Name>EPRacing</Name>
     </ProjectReference>
   </ItemGroup>
