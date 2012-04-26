@@ -1,27 +1,29 @@
-﻿@{
+﻿@model IList<EPRacing.Model.Product>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Produkter</h2>
 <ul class="thumbnails">
-    <li class="span3">
-        <div class="thumbnail">
-            <img alt="" src="/Content/images/tinyshop/assets/1.jpg">
-            <div class="caption">
-                <h5>Item 1</h5>
-                <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
-                    porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                <p>
-                    <a class="btn primary details" href="#" rel="ajax/1.html"><i class="icon-zoom-in"></i>
-                    </a><a class="btn addto" href="#" rel="1">Add to <i class="icon-shopping-cart"></i>
-                    </a><span class="label label-info price">$ 10</span>
-                </p>
+    @foreach(var product in Model) {
+        <li class="span3">
+            <div class="thumbnail">
+                <img alt="" src="@product.Image">
+                <div class="caption">
+                    <h5>@product.Name</h5>
+                    <p>
+                        @product.Description
+                    </p>
+                    <p>
+                        <a class="btn primary details" href="#" rel="@product.Id"><i class="icon-zoom-in"></i>
+                        </a><a class="btn addto" href="#" rel="@product.Id">Add to <i class="icon-shopping-cart"></i>
+                            </a><span class="label label-info price">@product.Price kr</span>
+                    </p>
+                </div>
             </div>
-        </div>
-    </li>
-    <li class="span3">
+        </li>
+    }
+    @*<li class="span3">
         <div class="thumbnail">
             <img alt="" src="/Content/images/tinyshop/assets/2.jpg">
             <div class="caption">
@@ -158,7 +160,7 @@
                 </p>
             </div>
         </div>
-    </li>
+    </li>*@
 </ul>
 <div class="pagination">
     <ul>

@@ -1,5 +1,46 @@
-$(document).ready(function(){  
+
+var viewModel = { };
+var basket = function() {
+    var pub = { };
+    pub.init = function () {
+        $.getJSON("/Basket/Get", function(data) {
+            viewModel = ko.mapping.fromJS(data.Basket);
+            ko.applyBindings(viewModel);
+        });        
+        
+    }
+
+    pub.get = function() {
+        $.getJSON("/Basket/Get", function (data) {
+            ko.mapping.fromJS(data.Basket, viewModel);
+        });
+    };
     
+
+
+    pub.add = function(id) {
+        $.ajax({
+            type: "POST",
+            url: "/Basket/Add",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: JSON.stringify({ id: id }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                alert("Added:" + data.Product.Name);
+                ko.mapping.fromJS(data.Basket, viewModel);
+            },
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+        });
+    };
+    return pub;
+}();
+
+$(document).ready(function () {
+
+    basket.init();
     var $container = $('.thumbnails');
 
     $container.imagesLoaded( function(){
@@ -27,23 +68,26 @@ $(document).ready(function(){
         });
         return false;
     });
-    
-    $('.addto').live('click',function(event){
-        $('.buyNow').show();
-        var itemsNb = parseInt ($('.shopBtn span').html());
-        itemsNb++;
+    $('.addto').live('click', function () {
         var id = parseInt($(this).attr('rel'));
-        $.getJSON('json/items.json', function(data) {
-            trash = '<a href="#" class="trash"><i class="icon-trash"></i></a>';
-            $('.cartTab tbody').append('<tr><td>'+data.items[id-1].name+'</td><td class="tdPrice">$ <span>'+data.items[id-1].price+'</span></td><td>'+trash+'</td></tr>');
-            $('#amount').html(parseInt($('#amount').html())+parseInt(data.items[id-1].price));
-        });
-        $('.shopBtn span').html(itemsNb);
-        $('.alertAdd').clearQueue().hide().css('opacity','1').show().fadeTo(2000,0,function(){
-            $('.alertAdd').hide().css('opacity','1');
-        });
-        return false;
+        basket.add(id);
     });
+    //$('.addto').live('click',function(event){
+    //    $('.buyNow').show();
+    //    var itemsNb = parseInt ($('.shopBtn span').html());
+    //    itemsNb++;
+    //    var id = parseInt($(this).attr('rel'));
+    //    $.getJSON('json/items.json', function(data) {
+    //        trash = '<a href="#" class="trash"><i class="icon-trash"></i></a>';
+    //        $('.cartTab tbody').append('<tr><td>'+data.items[id-1].name+'</td><td class="tdPrice">$ <span>'+data.items[id-1].price+'</span></td><td>'+trash+'</td></tr>');
+    //        $('#amount').html(parseInt($('#amount').html())+parseInt(data.items[id-1].price));
+    //    });
+    //    $('.shopBtn span').html(itemsNb);
+    //    $('.alertAdd').clearQueue().hide().css('opacity','1').show().fadeTo(2000,0,function(){
+    //        $('.alertAdd').hide().css('opacity','1');
+    //    });
+    //    return false;
+    //});
     
     $('.trash').live('click',function(){
         var price = parseInt($(this).parent().prev().children('span').html());

@@ -9,7 +9,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
+using EPRacing.Web.Setup;
+using StructureMap;
 namespace EPRacing.Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -48,8 +49,16 @@ namespace EPRacing.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            var bootstraper = new BootstrapStructureMap();
+            var container =bootstraper.Setup();
 
-            BundleTable.Bundles.RegisterTemplateBundles();
+            foreach (var task in container.GetAllInstances<IBootstrapTask>())
+            {
+                task.Execute();
+            }
+            //BundleTable.Bundles.RegisterTemplateBundles();
         }
     }
+
+
 }

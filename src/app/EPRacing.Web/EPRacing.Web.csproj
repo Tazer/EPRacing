@@ -53,6 +53,27 @@
       <Private>True</Private>
       <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\libs\RavenDb\Client\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\..\libs\RavenDb\Client\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\..\..\libs\RavenDb\Client\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Debug">
+      <HintPath>..\..\..\libs\RavenDb\Client\Raven.Client.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\..\..\libs\RavenDb\Client\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.MvcIntegration">
+      <HintPath>..\..\..\libs\RavenDb\Client\Raven.Client.MvcIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -130,9 +151,17 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\..\..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BasketController.cs" />
+    <Compile Include="Setup\Class1.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +174,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\products\odb2-adapter.jpg" />
     <Content Include="Content\images\tinyshop\assets\1.jpg" />
     <Content Include="Content\images\tinyshop\assets\2.jpg" />
     <Content Include="Content\images\tinyshop\assets\3.jpg" />
@@ -206,10 +236,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.0.0.debug.js" />
     <Content Include="Scripts\knockout-2.0.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -262,7 +295,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>59662</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:55287/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
