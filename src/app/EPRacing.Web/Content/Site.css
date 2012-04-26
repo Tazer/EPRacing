@@ -174,10 +174,6 @@ p {
     float: none;
 }
 
-.thumbnails > li {
-    float: none;
-}
-
 .buyNow {
     display: none;
 }
