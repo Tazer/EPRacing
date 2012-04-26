@@ -26,8 +26,11 @@ var basket = function() {
             data: JSON.stringify({ id: id }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function(data) {
-                alert("Added:" + data.Product.Name);
+            success: function (data)
+            {
+                    $('.alertAdd').clearQueue().hide().css('opacity','1').show().fadeTo(2000,0,function(){
+                        $('.alertAdd').hide().css('opacity','1');
+                    });
                 ko.mapping.fromJS(data.Basket, viewModel);
             },
             failure: function(errMsg) {
