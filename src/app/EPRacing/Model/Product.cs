@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace EPRacing.Model
 {
+    public class Order : BaseEntity
+    {
+        public Order(string email,Basket basket)
+        {
+            Email = email;
+            Basket = basket;
+        }
+
+        public string Email { get; set; }
+        public Basket Basket { get; set; }
+    }
+
     public class Basket : BaseEntity
     {
 

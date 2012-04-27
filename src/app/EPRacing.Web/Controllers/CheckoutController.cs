@@ -24,7 +24,9 @@ namespace EPRacing.Web.Controllers
         public ActionResult Pay(string email)
         {
             var basket = GetBasket();
-            return View(new PaymentModel(basket,email));
+            var order = new Order(email, basket);
+            _documentSession.Store(order);
+            return View(new PaymentModel(basket,email,order.Id));
         }
 
         
@@ -63,13 +65,13 @@ namespace EPRacing.Web.Controllers
         public string MD5 { get { return FormsAuthentication.HashPasswordForStoringInConfigFile(SellerEmail + ":" + Cost + ":" + ExtraCost + ":" + OkUrl + ":"+ GuaranteeOffered + Key, "MD5"); } }
         public int GuaranteeOffered { get; set; }
 
-        public PaymentModel(Basket basket,string buyerEmail)
+        public PaymentModel(Basket basket,string buyerEmail,long orderId)
         {
             SellerEmail = "shop@epracing.se";
             Description = "Varor från EP-Racing";
             Cost = basket.Total - basket.Shipping;
             ExtraCost = basket.Shipping;
-            OkUrl = "/Checkout/Receipt";
+            OkUrl = "/Checkout/Receipt/"+ orderId;
             AgentId = 123;
             Basket = basket;
             BuyerEmail = buyerEmail;
