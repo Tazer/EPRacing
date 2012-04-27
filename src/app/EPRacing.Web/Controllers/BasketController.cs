@@ -26,7 +26,7 @@ namespace EPRacing.Web.Controllers
             return Json(new { Basket = basket }, JsonRequestBehavior.AllowGet);
         }
 
-        private Basket GetBasket()
+        public Basket GetBasket()
         {
             var publicId = Session["PublicId"];
 
@@ -44,7 +44,7 @@ namespace EPRacing.Web.Controllers
             return basket;
         }
 
-        private Basket CreateBasket()
+        public Basket CreateBasket()
         {
             var publicId = Guid.NewGuid();
             var basket = new Basket(publicId);
@@ -69,6 +69,21 @@ namespace EPRacing.Web.Controllers
                             {
                                 Basket = basket,
                                 Product = product,
+                            });
+        }
+
+        public JsonResult Delete(long id)
+        {
+           
+
+            var basket = GetBasket();
+            var productToRemove = basket.Products.FirstOrDefault(x => x.Id == id);
+            basket.Products.Remove(productToRemove);
+            _documentSession.SaveChanges();
+
+            return Json(new
+                            {
+                                Basket = basket
                             });
         }
 

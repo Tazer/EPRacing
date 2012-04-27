@@ -1,24 +1,42 @@
 
-var viewModel = { };
-var basket = function() {
-    var pub = { };
-    pub.init = function () {
+var viewModel = {};
+var basket = function () {
+    var pub = {};
+    pub.init = function() {
         $.getJSON("/Basket/Get", function(data) {
             viewModel = ko.mapping.fromJS(data.Basket);
             ko.applyBindings(viewModel);
-        });        
-        
-    }
+        });
 
-    pub.get = function() {
+    };
+
+    pub.get = function () {
         $.getJSON("/Basket/Get", function (data) {
             ko.mapping.fromJS(data.Basket, viewModel);
         });
     };
-    
+
+    pub.delete = function () {
+        console.log(this);
+        console.log(this.Id());
+        $.ajax({
+            type: "POST",
+            url: "/Basket/Delete",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: JSON.stringify({ id: this.Id() }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                ko.mapping.fromJS(data.Basket, viewModel);
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    };
 
 
-    pub.add = function(id) {
+    pub.add = function (id) {
         $.ajax({
             type: "POST",
             url: "/Basket/Add",
@@ -26,14 +44,13 @@ var basket = function() {
             data: JSON.stringify({ id: id }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function (data)
-            {
-                    $('.alertAdd').clearQueue().hide().css('opacity','1').show().fadeTo(2000,0,function(){
-                        $('.alertAdd').hide().css('opacity','1');
-                    });
+            success: function (data) {
+                $('.alertAdd').clearQueue().hide().css('opacity', '1').show().fadeTo(2000, 0, function () {
+                    $('.alertAdd').hide().css('opacity', '1');
+                });
                 ko.mapping.fromJS(data.Basket, viewModel);
             },
-            failure: function(errMsg) {
+            failure: function (errMsg) {
                 alert(errMsg);
             }
         });
@@ -46,26 +63,34 @@ $(document).ready(function () {
     basket.init();
     var $container = $('.thumbnails');
 
-    $container.imagesLoaded( function(){
+    $container.imagesLoaded(function () {
         $container.masonry({
-            itemSelector : 'li.span3'
+            itemSelector: 'li.span3'
         });
     });
 
-	
+    $('#paymentForm').validate({
+        rules: {
+            email: {required: true , email : true}
+        },
+        messages: {
+            email: 'Fyll i email'
+        }
+    });
+
     $('#modal,#modalCart').modal({
         keyboard: false
     });
-    
+
     $('#modal,#modalCart').modal('hide');
-    
-    $('.shopBtn').click(function(){
+
+    $('.shopBtn').click(function () {
         $('#modalCart').modal('show');
         return false;
     });
-    
-    $('.details').click(function(){
-        $.get($(this).attr('rel'), function(data) {
+
+    $('.details').click(function () {
+        $.get($(this).attr('rel'), function (data) {
             $('#modal .modal').html(data);
             $('#modal').modal('show');
         });
@@ -75,34 +100,7 @@ $(document).ready(function () {
         var id = parseInt($(this).attr('rel'));
         basket.add(id);
     });
-    //$('.addto').live('click',function(event){
-    //    $('.buyNow').show();
-    //    var itemsNb = parseInt ($('.shopBtn span').html());
-    //    itemsNb++;
-    //    var id = parseInt($(this).attr('rel'));
-    //    $.getJSON('json/items.json', function(data) {
-    //        trash = '<a href="#" class="trash"><i class="icon-trash"></i></a>';
-    //        $('.cartTab tbody').append('<tr><td>'+data.items[id-1].name+'</td><td class="tdPrice">$ <span>'+data.items[id-1].price+'</span></td><td>'+trash+'</td></tr>');
-    //        $('#amount').html(parseInt($('#amount').html())+parseInt(data.items[id-1].price));
-    //    });
-    //    $('.shopBtn span').html(itemsNb);
-    //    $('.alertAdd').clearQueue().hide().css('opacity','1').show().fadeTo(2000,0,function(){
-    //        $('.alertAdd').hide().css('opacity','1');
-    //    });
-    //    return false;
-    //});
-    
-    $('.trash').live('click',function(){
-        var price = parseInt($(this).parent().prev().children('span').html());
-        $('#amount').html(parseInt($('#amount').html())- price);
-        $(this).parent().parent().remove();
-        $('.shopBtn span').html(parseInt($('.shopBtn span').html()) -1 );
-        if ($('#amount').html()==0) $('.buyNow').hide();
-        return false;
-        
-    });
-    
-    
+
     $('#goTop').click(function () {
         $('body,html').animate({
             scrollTop: 0

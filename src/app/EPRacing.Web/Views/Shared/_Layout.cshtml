@@ -18,7 +18,7 @@
                 <a href=".">
                     <img src="/Content/images/tinyshop/logo.png" alt="" /></a>
             </div>
-@*            <ul class="nav nav-pills">
+            @*            <ul class="nav nav-pills">
                 <li class="dropdown" id="menu1"><a class="dropdown-toggle" data-toggle="dropdown"
                     href="#menu1">Sort by category <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -27,8 +27,8 @@
                         <li><a href="#">Category 3</a></li>
                     </ul>
                 </li>
-            </ul>*@
-            <a class="shopBtn" href="#modalCart"><span class="label label-info" data-bind="text: Products().length">0</span></a>
+            </ul>*@ <a class="shopBtn" href="#modalCart"><span class="label label-info" data-bind="text: Products().length">
+                0</span></a>
             <div class="hero-unit">
                 <h1>Välkommen till EP Racing</h1>
                 <p>
@@ -43,7 +43,7 @@
         <div class="span12">
             <div class="span9">
                 <div class="mainContent">
-                        @RenderBody()
+                    @RenderBody()
                 </div>
             </div>
             <div class="span3" id="rightside">
@@ -66,7 +66,7 @@
                     facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
                     Nullam id dolor id nibh ultricies vehicula ut id elit.
                 </p>
-                <div class="page-header">
+                @*        <div class="page-header">
                     <h3>Best Items</h3>
                 </div>
                 <div class="thumbnail">
@@ -78,7 +78,7 @@
                             </a><span class="label label-info price">$ 10</span>
                         </p>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
@@ -117,14 +117,27 @@
                         <tr>
                             <td data-bind="text:Name"></td>
                             <td data-bind="text:Price"></td>
+                            <td><a href="javascript:void(0);" data-bind="click: basket.delete" class="trash"><i
+                                class="icon-trash"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="modal-footer">
-                <span class="label label-info price">Total : <span id="amount" data-bind="text: Total">0</span> kr</span>
-                <a class="btn buyNow" href="http://paypal.com" target="blank">Buy Now <i class="icon-ok">
-                </i></a>
+            <div class="row modal-footer">
+                <div class="span3" style="width: 100px;">
+                    <span class="label label-info price">Frakt : <span id="shipping" data-bind="text: Shipping">
+                        0</span>kr</span>
+                </div>
+                <div class="span3" style="width: 100px;">
+                    <span class="label label-info price">Total : <span id="amount" data-bind="text: Total">
+                        0</span>kr</span>
+                </div>
+                <div class="span6" style="width: 280px;">
+                    <form class="form-horizontal" method="POST" id="paymentForm" action="/Checkout/Pay">
+                    <input placeholder="E-post" type="text" name="email" class="input-medium">
+                    <button type="submit" class="btn"> Gå till kassan </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -136,6 +149,7 @@
     <!-- popin -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="/Scripts/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/Scripts/knockout-2.0.0.js"></script>
     <script type="text/javascript" src="/Scripts/knockout.mapping-latest.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>

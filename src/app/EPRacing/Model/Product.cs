@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,8 @@ namespace EPRacing.Model
         public Guid PublicId { get; set; }
         public IList<Product> Products { get; set; }
         public DateTime Created { get; set; }
-        public decimal Total { get { return Products.Any() ? Products.Sum(x => x.Price) : 0; } }
+        public decimal Shipping { get { return int.Parse(ConfigurationManager.AppSettings["Shipping"]); } }
+        public decimal Total { get { return Products.Any() ? Products.Sum(x => x.Price) + Shipping : 0; } }
     }
 
     public class Product : BaseEntity
