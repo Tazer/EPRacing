@@ -1,0 +1,22 @@
+﻿@model EPRacing.Web.Controllers.PaymentModel
+<html>
+<head>
+    <script type="text/javascript">
+    window.onload = function (evt) { document.forms[0].submit(); }
+    </script>
+</head>
+<body>
+    <form action="https://www.payson.se/testagent/default.aspx" method="post">
+    <input type="hidden" name="BuyerEmail" value="@Model.BuyerEmail">
+    <input type="hidden" name="SellerEmail" value="@Model.SellerEmail">
+    <input type="hidden" name="AgentId" value="@Model.AgentId">
+    <input type="hidden" name="Cost" value="@Model.Cost">
+    <input type="hidden" name="ExtraCost" value="@Model.ExtraCost">
+    <input type="hidden" name="Description" value="@Model.Description">
+    <input type="hidden" name="OkUrl" value="@Model.OkUrl">
+    <input type="hidden" name="GuaranteeOffered" value="@Model.GuaranteeOffered">
+    <input type="hidden" name="MD5" value="@Model.MD5">
+    <input type="submit" value="Betala med Payson">
+    </form>
+</body>
+</html>
