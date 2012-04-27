@@ -13,10 +13,19 @@ namespace EPRacing.Model
         {
             Email = email;
             Basket = basket;
+            Payed = false;
+            Created = DateTime.Now;
         }
 
         public string Email { get; set; }
         public Basket Basket { get; set; }
+        public bool Payed { get; protected set; }
+        public DateTime Created { get; set; }
+        public string TransactionId { get; set; }
+        public void Completed()
+        {
+            Payed = true;
+        }
     }
 
     public class Basket : BaseEntity
