@@ -62,6 +62,7 @@ namespace EPRacing.Web.Controllers
         public string OkUrl { get; set; }
         public int AgentId { get; set; }
         public string Key { get; set; }
+        public long RefNr { get; set; }
         public string MD5 { get { return FormsAuthentication.HashPasswordForStoringInConfigFile(SellerEmail + ":" + Cost + ":" + ExtraCost + ":" + OkUrl + ":"+ GuaranteeOffered + Key, "MD5"); } }
         public int GuaranteeOffered { get; set; }
 
@@ -76,6 +77,7 @@ namespace EPRacing.Web.Controllers
             Basket = basket;
             BuyerEmail = buyerEmail;
             GuaranteeOffered = 1;
+            RefNr = orderId;
         }
     }
 }
