@@ -1,11 +1,35 @@
 
 var viewModel = {};
+var productModel = {};
+
+var product = function () {
+    var priv = {};
+    priv.inited = false;
+    var pub = { };
+    pub.showDetails = function(id) {
+        $.getJSON("/Product/Index/" + id, function (data) {
+  
+            
+            if(priv.inited)
+                ko.mapping.fromJS(data, productModel);
+            else {
+                productModel = ko.mapping.fromJS(data);
+                ko.applyBindings(productModel,document.getElementById("modalProductDetail"));
+                priv.inited = true;
+            }
+            $('#modalProductDetail').modal('show');
+        });
+    };
+    return pub;
+}();
+
 var basket = function () {
     var pub = {};
     pub.init = function() {
         $.getJSON("/Basket/Get", function(data) {
             viewModel = ko.mapping.fromJS(data.Basket);
-            ko.applyBindings(viewModel);
+            ko.applyBindings(viewModel, document.getElementById("modalCart"));
+            ko.applyBindings(viewModel, document.getElementById("header"));
         });
 
     };
@@ -17,8 +41,6 @@ var basket = function () {
     };
 
     pub.delete = function () {
-        console.log(this);
-        console.log(this.Id());
         $.ajax({
             type: "POST",
             url: "/Basket/Delete",
@@ -34,9 +56,12 @@ var basket = function () {
             }
         });
     };
-
+    pub.addFromDataBind = function () {
+        pub.add(this.Id());
+    };
 
     pub.add = function (id) {
+        $('#modalProductDetail').modal('hide');
         $.ajax({
             type: "POST",
             url: "/Basket/Add",
@@ -78,11 +103,11 @@ $(document).ready(function () {
         }
     });
 
-    $('#modal,#modalCart').modal({
+    $('#modal,#modalCart,#modalProductDetail').modal({
         keyboard: false
     });
 
-    $('#modal,#modalCart').modal('hide');
+    $('#modal,#modalCart,#modalProductDetail').modal('hide');
 
     $('.shopBtn').click(function () {
         $('#modalCart').modal('show');
@@ -90,10 +115,7 @@ $(document).ready(function () {
     });
 
     $('.details').click(function () {
-        $.get($(this).attr('rel'), function (data) {
-            $('#modal .modal').html(data);
-            $('#modal').modal('show');
-        });
+        product.showDetails($(this).attr('rel'));
         return false;
     });
     $('.addto').live('click', function () {

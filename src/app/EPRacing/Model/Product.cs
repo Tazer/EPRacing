@@ -46,10 +46,11 @@ namespace EPRacing.Model
 
     public class Product : BaseEntity
     {
-        public Product(string name,string description,decimal price,int stockamount,string image)
+        public Product(string name,string description,string longdescription,decimal price,int stockamount,string image)
         {
             Name = name;
             Description = description;
+            Longdescription = longdescription;
             Price = price;
             StockAmount = stockamount;
             Image = image;
@@ -58,6 +59,8 @@ namespace EPRacing.Model
 
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Longdescription { get; set; }
+        public string LongDescription { get; set; }
         public decimal Price { get; set; }
         public int StockAmount { get; set; }
         public DateTime Added { get; set; }

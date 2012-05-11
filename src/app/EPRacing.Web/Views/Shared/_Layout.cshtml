@@ -32,9 +32,6 @@
             <div class="hero-unit">
                 <h1>Välkommen till EP Racing</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et odio eu nisi
-                    porta pulvinar. Donec quam massa, sollicitudin vitae venenatis vitae, blandit nec
-                    magna. In lobortis, metus a fringilla euismod, leo nulla luctus dolor
                 </p>
             </div>
         </div>
@@ -47,26 +44,25 @@
                 </div>
             </div>
             <div class="span3" id="rightside">
-@*                <form action="" method="post" name="search">
+                @*                <form action="" method="post" name="search">
                 <input type="text" placeholder="Search..." />
                 </form>*@
                 <div class="page-header">
-                    <h3>Tweet , Like &amp; Share this</h3>
+                    <h3>Tweeta , Gilla &amp; Dela</h3>
                 </div>
                 <p>
-                    <a href="#">
-                        <img src="/Content/images/tinyshop/nl_twitter.png" alt=""></a><a href="#">
-                            <img src="/Content/images/tinyshop/nl_facebook.png" alt=""></a><a href="#">
+                    <a href="http://twitter.com/epracinghb">
+                        <img src="/Content/images/tinyshop/nl_twitter.png" alt=""></a><a href="https://www.facebook.com/epracing.se">
+                            <img src="/Content/images/tinyshop/nl_facebook.png" alt=""></a><a href="https://plus.google.com/b/103282634961148598778/">
                                 <img src="/Content/images/tinyshop/nl_gplus.png" alt=""></a>
                 </p>
-                <div class="page-header">
+                @*                <div class="page-header">
                     <h3>Promotion</h3>
                 </div>
                 <p>
                     facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
                     Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>
-                @*        <div class="page-header">
+                </p>*@ @*        <div class="page-header">
                     <h3>Best Items</h3>
                 </div>
                 <div class="thumbnail">
@@ -84,13 +80,11 @@
     </div>
     <footer class="footer ">
         <div class="span12">
-            <p class="pull-right"><a href="#" id="goTop">Back to top</a></p>
+            <p class="pull-right"><a href="#" id="goTop">Till toppen</a></p>
             <p>
-                egestas eget quam. Donec id elit non mi porta gravida at eget metus <a target="_blank"
-                    href="#">EP Racing</a>- <a href="mailto:zied.hosni.mail@gmail.com">contact</a>
-                .
+                <a href="mailto:contact@epracing.se">kontakta oss</a>.
             </p>
-            <p>&COPY; 2012</p>
+            <p>&COPY;EP Racing 2012</p>
         </div>
     </footer>
     <!-- popin -->
@@ -135,15 +129,34 @@
                 <div class="span6" style="width: 280px;">
                     <form class="form-horizontal" method="POST" id="paymentForm" action="/Checkout/Pay">
                     <input placeholder="E-post" type="text" name="email" class="input-medium">
-                    <button type="submit" class="btn"> Gå till kassan </button>
+                    <button type="submit" class="btn">Gå till kassan </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <div id="modalProductDetail">
+        <div class="modal">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3 data-bind="text:Name">Item 1</h3>
+            </div>
+            <div class="modal-body">
+                <div class="thumbnail img">
+                    <img alt="" data-bind='attr: { src: Image }'>
+                </div>
+                <p data-bind="text: LongDescription"></p>
+            </div>
+            <div class="modal-footer">
+                <span class="label label-info price" data-bind="text:Price() + ' kr'"></span><a class="btn"
+                    href="#" data-bind="click:basket.addFromDataBind">Köp <i class="icon-shopping-cart">
+                    </i></a>
+            </div>
+        </div>
+    </div>
     <div class="span4 alertAdd">
         <div class="alert alert-info">
-            Added to your cart
+            Tillagt i varukorgen!
         </div>
     </div>
     <!-- popin -->
