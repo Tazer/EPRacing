@@ -2287,17 +2287,17 @@
         </member>
         <member name="M:Raven.Client.Document.IAbstractDocumentQuery`1.WhereContains(System.String,System.Object)">
             <summary>
-              Avoid using WhereConatins(), use Search() instead
+              Avoid using WhereContains(), use Search() instead
             </summary>
         </member>
         <member name="M:Raven.Client.Document.IAbstractDocumentQuery`1.WhereContains(System.String,System.Object[])">
             <summary>
-              Avoid using WhereConatins(), use Search() instead
+              Avoid using WhereContains(), use Search() instead
             </summary>
         </member>
         <member name="M:Raven.Client.Document.IAbstractDocumentQuery`1.WhereContains(System.String,System.Collections.Generic.IEnumerable{System.Object})">
             <summary>
-              Avoid using WhereConatins(), use Search() instead
+              Avoid using WhereContains(), use Search() instead
             </summary>
         </member>
         <member name="M:Raven.Client.Document.IAbstractDocumentQuery`1.WhereStartsWith(System.String,System.Object)">
@@ -2777,12 +2777,12 @@
         </member>
         <member name="M:Raven.Client.Document.AbstractDocumentQuery`2.WhereContains(System.String,System.Object)">
             <summary>
-              Avoid using WhereConatins(), use Search() instead
+              Avoid using WhereContains(), use Search() instead
             </summary>
         </member>
         <member name="M:Raven.Client.Document.AbstractDocumentQuery`2.WhereContains(System.String,System.Object[])">
             <summary>
-              Avoid using WhereConatins(), use Search() instead
+              Avoid using WhereContains(), use Search() instead
             </summary>
         </member>
         <member name="M:Raven.Client.Document.AbstractDocumentQuery`2.WhereIn(System.String,System.Collections.Generic.IEnumerable{System.Object})">
@@ -2792,7 +2792,7 @@
         </member>
         <member name="M:Raven.Client.Document.AbstractDocumentQuery`2.WhereContains(System.String,System.Collections.Generic.IEnumerable{System.Object})">
             <summary>
-              Avoid using WhereConatins(), use Search() instead
+              Avoid using WhereContains(), use Search() instead
             </summary>
         </member>
         <member name="M:Raven.Client.Document.AbstractDocumentQuery`2.WhereStartsWith(System.String,System.Object)">
@@ -3175,7 +3175,23 @@
               Defaults to NotAnalyzed
             </remarks>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereEquals``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches exact value
+            </summary>
+            <remarks>
+              Defaults to NotAnalyzed
+            </remarks>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereEquals(System.String,System.Object,System.Boolean)">
+            <summary>
+              Matches exact value
+            </summary>
+            <remarks>
+              Defaults to allow wildcards only if analyzed
+            </remarks>
+        </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereEquals``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,System.Boolean)">
             <summary>
               Matches exact value
             </summary>
@@ -3208,11 +3224,23 @@
             Check that the field has one of the specified value
             </summary>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereIn``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Check that the field has one of the specified value
+            </summary>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereStartsWith(System.String,System.Object)">
             <summary>
               Matches fields which starts with the specified value.
             </summary>
             <param name = "fieldName">Name of the field.</param>
+            <param name = "value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereStartsWith``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields which starts with the specified value.
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
             <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereEndsWith(System.String,System.Object)">
@@ -3222,11 +3250,26 @@
             <param name = "fieldName">Name of the field.</param>
             <param name = "value">The value.</param>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereEndsWith``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields which ends with the specified value.
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereBetween(System.String,System.Object,System.Object)">
             <summary>
               Matches fields where the value is between the specified start and end, exclusive
             </summary>
             <param name = "fieldName">Name of the field.</param>
+            <param name = "start">The start.</param>
+            <param name = "end">The end.</param>
+        </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereBetween``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,``0)">
+            <summary>
+              Matches fields where the value is between the specified start and end, exclusive
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
             <param name = "start">The start.</param>
             <param name = "end">The end.</param>
         </member>
@@ -3238,11 +3281,26 @@
             <param name = "start">The start.</param>
             <param name = "end">The end.</param>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereBetweenOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,``0)">
+            <summary>
+              Matches fields where the value is between the specified start and end, inclusive
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "start">The start.</param>
+            <param name = "end">The end.</param>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereGreaterThan(System.String,System.Object)">
             <summary>
               Matches fields where the value is greater than the specified value
             </summary>
             <param name = "fieldName">Name of the field.</param>
+            <param name = "value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereGreaterThan``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is greater than the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
             <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereGreaterThanOrEqual(System.String,System.Object)">
@@ -3252,6 +3310,13 @@
             <param name = "fieldName">Name of the field.</param>
             <param name = "value">The value.</param>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereGreaterThanOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is greater than or equal to the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereLessThan(System.String,System.Object)">
             <summary>
               Matches fields where the value is less than the specified value
@@ -3259,11 +3324,25 @@
             <param name = "fieldName">Name of the field.</param>
             <param name = "value">The value.</param>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereLessThan``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is less than the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WhereLessThanOrEqual(System.String,System.Object)">
             <summary>
               Matches fields where the value is less than or equal to the specified value
             </summary>
             <param name = "fieldName">Name of the field.</param>
+            <param name = "value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.WhereLessThanOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is less than or equal to the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
             <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.AndAlso">
@@ -3327,6 +3406,14 @@
               You can prefix a field name with '-' to indicate sorting by descending or '+' to sort by ascending
             </summary>
             <param name = "fields">The fields.</param>
+        </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+              Order the results by the specified fields
+              The fields are the names of the fields to sort, defaulting to sorting by ascending.
+              You can prefix a field name with '-' to indicate sorting by descending or '+' to sort by ascending
+            </summary>
+            <param name = "propertySelectors">Property selectors for the fields.</param>
         </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.WaitForNonStaleResultsAsOfNow">
             <summary>
@@ -3402,6 +3489,13 @@
             <param name = "fieldName">Name of the field.</param>
             <param name = "descending">if set to <c>true</c> [descending].</param>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.AddOrder(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean)">
+            <summary>
+              Adds an ordering for a specific field to the query
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "descending">if set to <c>true</c> [descending].</param>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.AddOrder(System.String,System.Boolean,System.Type)">
             <summary>
               Adds an ordering for a specific field to the query and specifies the type of field for sorting purposes
@@ -3428,7 +3522,21 @@
             If there is more than a single term, each of them will be checked independently.
             </summary>
         </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.Search(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
+        </member>
         <member name="M:Raven.Client.IDocumentQueryBase`2.GroupBy(Raven.Abstractions.Data.AggregationOperation,System.String[])">
+            <summary>
+              Instruct the index to group by the specified fields using the specified aggregation operation
+            </summary>
+            <remarks>
+              This is only valid on dynamic indexes queries
+            </remarks>
+        </member>
+        <member name="M:Raven.Client.IDocumentQueryBase`2.GroupBy(Raven.Abstractions.Data.AggregationOperation,System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
             <summary>
               Instruct the index to group by the specified fields using the specified aggregation operation
             </summary>
@@ -3537,12 +3645,28 @@
             	Defaults to NotAnalyzed
             </remarks>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereEquals``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches exact value
+            </summary>
+            <remarks>
+              Defaults to NotAnalyzed
+            </remarks>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereEquals(System.String,System.Object,System.Boolean)">
             <summary>
             	Matches exact value
             </summary>
             <remarks>
             	Defaults to allow wildcards only if analyzed
+            </remarks>
+        </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereEquals``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,System.Boolean)">
+            <summary>
+              Matches exact value
+            </summary>
+            <remarks>
+              Defaults to allow wildcards only if analyzed
             </remarks>
         </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereEquals(Raven.Client.WhereParams)">
@@ -3570,6 +3694,11 @@
             Check that the field has one of the specified value
             </summary>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereIn``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Check that the field has one of the specified value
+            </summary>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereStartsWith(System.String,System.Object)">
             <summary>
             Matches fields which starts with the specified value.
@@ -3577,12 +3706,26 @@
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereStartsWith``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields which starts with the specified value.
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereEndsWith(System.String,System.Object)">
             <summary>
             Matches fields which ends with the specified value.
             </summary>
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereEndsWith``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields which ends with the specified value.
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereBetween(System.String,System.Object,System.Object)">
             <summary>
@@ -3592,6 +3735,14 @@
             <param name="start">The start.</param>
             <param name="end">The end.</param>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereBetween``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,``0)">
+            <summary>
+              Matches fields where the value is between the specified start and end, exclusive
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "start">The start.</param>
+            <param name = "end">The end.</param>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereBetweenOrEqual(System.String,System.Object,System.Object)">
             <summary>
             Matches fields where the value is between the specified start and end, inclusive
@@ -3600,12 +3751,27 @@
             <param name="start">The start.</param>
             <param name="end">The end.</param>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereBetweenOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,``0)">
+            <summary>
+              Matches fields where the value is between the specified start and end, inclusive
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "start">The start.</param>
+            <param name = "end">The end.</param>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereGreaterThan(System.String,System.Object)">
             <summary>
             Matches fields where the value is greater than the specified value
             </summary>
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereGreaterThan``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is greater than the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereGreaterThanOrEqual(System.String,System.Object)">
             <summary>
@@ -3614,6 +3780,13 @@
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereGreaterThanOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is greater than or equal to the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereLessThan(System.String,System.Object)">
             <summary>
             Matches fields where the value is less than the specified value
@@ -3621,12 +3794,26 @@
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereLessThan``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is less than the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WhereLessThanOrEqual(System.String,System.Object)">
             <summary>
             Matches fields where the value is less than or equal to the specified value
             </summary>
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.WhereLessThanOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is less than or equal to the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#AndAlso">
             <summary>
@@ -3689,6 +3876,14 @@
             You can prefix a field name with '-' to indicate sorting by descending or '+' to sort by ascending
             </summary>
             <param name="fields">The fields.</param>
+        </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+              Order the results by the specified fields
+              The fields are the names of the fields to sort, defaulting to sorting by ascending.
+              You can prefix a field name with '-' to indicate sorting by descending or '+' to sort by ascending
+            </summary>
+            <param name = "propertySelectors">Property selectors for the fields.</param>
         </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#WaitForNonStaleResultsAsOfNow">
             <summary>
@@ -3760,6 +3955,13 @@
             <param name="fieldName">Name of the field.</param>
             <param name="descending">if set to <c>true</c> [descending].</param>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.AddOrder(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean)">
+            <summary>
+              Adds an ordering for a specific field to the query
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "descending">if set to <c>true</c> [descending].</param>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#RandomOrdering">
             <summary>
             Order the search results randomly
@@ -3791,11 +3993,25 @@
             If there is more than a single term, each of them will be checked independently.
             </summary>
         </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Search(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
+        </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#CloseSubclause">
             <summary>
             Simplified method for closing a clause within the query
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.GroupBy(Raven.Abstractions.Data.AggregationOperation,System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+              Instruct the index to group by the specified fields using the specified aggregation operation
+            </summary>
+            <remarks>
+              This is only valid on dynamic indexes queries
+            </remarks>
         </member>
         <member name="M:Raven.Client.Document.AsyncDocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IAsyncDocumentQuery{T}}#Intersect">
             <summary>
@@ -4450,6 +4666,11 @@
             Gets a value indicating whether any of the entities tracked by the session has changes.
             </summary>
         </member>
+        <member name="M:Raven.Client.IAsyncAdvancedSessionOperations.LoadStartingWithAsync``1(System.String,System.Int32,System.Int32)">
+            <summary>
+            Load documents with the specified key prefix
+            </summary>
+        </member>
         <member name="M:Raven.Client.IAsyncAdvancedSessionOperations.AsyncLuceneQuery``1(System.String)">
             <summary>
             Query the specified index using Lucene syntax
@@ -4489,6 +4710,11 @@
         <member name="M:Raven.Client.Document.Async.AsyncDocumentSession.#ctor(Raven.Client.Document.DocumentStore,Raven.Client.Connection.Async.IAsyncDatabaseCommands,Raven.Client.Document.DocumentSessionListeners,System.Guid)">
             <summary>
             Initializes a new instance of the <see cref="T:Raven.Client.Document.Async.AsyncDocumentSession"/> class.
+            </summary>
+        </member>
+        <member name="M:Raven.Client.Document.Async.AsyncDocumentSession.LoadStartingWithAsync``1(System.String,System.Int32,System.Int32)">
+            <summary>
+            Load documents with the specified key prefix
             </summary>
         </member>
         <member name="M:Raven.Client.Document.Async.AsyncDocumentSession.AsyncLuceneQuery``1(System.String)">
@@ -5314,6 +5540,13 @@
             <param name="fieldName">Name of the field.</param>
             <param name="descending">if set to <c>true</c> [descending].</param>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.AddOrder(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean)">
+            <summary>
+              Adds an ordering for a specific field to the query
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "descending">if set to <c>true</c> [descending].</param>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#RandomOrdering">
             <summary>
             Order the search results randomly
@@ -5351,6 +5584,12 @@
             If there is more than a single term, each of them will be checked independently.
             </summary>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.Search(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Perform a search for documents which fields that match the searchTerms.
+            If there is more than a single term, each of them will be checked independently.
+            </summary>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#GroupBy(Raven.Abstractions.Data.AggregationOperation,System.String[])">
             <summary>
              Instruct the index to group by the specified fields using the specified aggregation operation
@@ -5358,6 +5597,14 @@
              <remarks>
              This is only valid on dynamic indexes queries
              </remarks>
+        </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.GroupBy(Raven.Abstractions.Data.AggregationOperation,System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+              Instruct the index to group by the specified fields using the specified aggregation operation
+            </summary>
+            <remarks>
+              This is only valid on dynamic indexes queries
+            </remarks>
         </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#Intersect">
             <summary>
@@ -5410,12 +5657,28 @@
             	Defaults to NotAnalyzed
             </remarks>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereEquals``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches exact value
+            </summary>
+            <remarks>
+              Defaults to NotAnalyzed
+            </remarks>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereEquals(System.String,System.Object,System.Boolean)">
             <summary>
             	Matches exact value
             </summary>
             <remarks>
             	Defaults to allow wildcards only if analyzed
+            </remarks>
+        </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereEquals``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,System.Boolean)">
+            <summary>
+              Matches exact value
+            </summary>
+            <remarks>
+              Defaults to allow wildcards only if analyzed
             </remarks>
         </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereEquals(Raven.Client.WhereParams)">
@@ -5443,6 +5706,11 @@
             Check that the field has one of the specified value
             </summary>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereIn``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Check that the field has one of the specified value
+            </summary>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereStartsWith(System.String,System.Object)">
             <summary>
             Matches fields which starts with the specified value.
@@ -5450,12 +5718,26 @@
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereStartsWith``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields which starts with the specified value.
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereEndsWith(System.String,System.Object)">
             <summary>
             Matches fields which ends with the specified value.
             </summary>
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereEndsWith``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields which ends with the specified value.
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereBetween(System.String,System.Object,System.Object)">
             <summary>
@@ -5465,6 +5747,14 @@
             <param name="start">The start.</param>
             <param name="end">The end.</param>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereBetween``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,``0)">
+            <summary>
+              Matches fields where the value is between the specified start and end, exclusive
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "start">The start.</param>
+            <param name = "end">The end.</param>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereBetweenOrEqual(System.String,System.Object,System.Object)">
             <summary>
             Matches fields where the value is between the specified start and end, inclusive
@@ -5473,12 +5763,27 @@
             <param name="start">The start.</param>
             <param name="end">The end.</param>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereBetweenOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0,``0)">
+            <summary>
+              Matches fields where the value is between the specified start and end, inclusive
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "start">The start.</param>
+            <param name = "end">The end.</param>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereGreaterThan(System.String,System.Object)">
             <summary>
             Matches fields where the value is greater than the specified value
             </summary>
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereGreaterThan``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is greater than the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereGreaterThanOrEqual(System.String,System.Object)">
             <summary>
@@ -5487,6 +5792,13 @@
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereGreaterThanOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is greater than or equal to the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereLessThan(System.String,System.Object)">
             <summary>
             Matches fields where the value is less than the specified value
@@ -5494,12 +5806,26 @@
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
         </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereLessThan``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is less than the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
+        </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WhereLessThanOrEqual(System.String,System.Object)">
             <summary>
             Matches fields where the value is less than or equal to the specified value
             </summary>
             <param name="fieldName">Name of the field.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.WhereLessThanOrEqual``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},``0)">
+            <summary>
+              Matches fields where the value is less than or equal to the specified value
+            </summary>
+            <param name = "propertySelector">Property selector for the field.</param>
+            <param name = "value">The value.</param>
         </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#AndAlso">
             <summary>
@@ -5570,6 +5896,14 @@
             You can prefix a field name with '-' to indicate sorting by descending or '+' to sort by ascending
             </summary>
             <param name="fields">The fields.</param>
+        </member>
+        <member name="M:Raven.Client.Document.DocumentQuery`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+              Order the results by the specified fields
+              The fields are the names of the fields to sort, defaulting to sorting by ascending.
+              You can prefix a field name with '-' to indicate sorting by descending or '+' to sort by ascending
+            </summary>
+            <param name = "propertySelectors">Property selectors for the fields.</param>
         </member>
         <member name="M:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#WaitForNonStaleResultsAsOfNow">
             <summary>
@@ -5729,6 +6063,12 @@
             </summary>
             <param name="path">The path.</param>
         </member>
+        <member name="M:Raven.Client.IDocumentSession.Include``2(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Begin a load while including the specified path 
+            </summary>
+            <param name="path">The path.</param>
+        </member>
         <member name="M:Raven.Client.IDocumentSession.SaveChanges">
             <summary>
             Saves all the changes to the Raven server.
@@ -5814,6 +6154,11 @@
             Refreshes the specified entity from Raven server.
             </summary>
             <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Raven.Client.ISyncAdvancedSessionOperation.LoadStartingWith``1(System.String,System.Int32,System.Int32)">
+            <summary>
+            Load documents with the specified key prefix
+            </summary>
         </member>
         <member name="M:Raven.Client.ISyncAdvancedSessionOperation.LuceneQuery``2">
             <summary>
@@ -6371,6 +6716,13 @@
             <returns></returns>
         </member>
         <member name="M:Raven.Client.Document.ILoaderWithInclude`1.Include(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Includes the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Raven.Client.Document.ILoaderWithInclude`1.Include``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
             <summary>
             Includes the specified path.
             </summary>
@@ -7132,13 +7484,14 @@
             Hook for users to provide additional logic on store operations
             </summary>
         </member>
-        <member name="M:Raven.Client.Listeners.IDocumentStoreListener.BeforeStore(System.String,System.Object,Raven.Json.Linq.RavenJObject)">
+        <member name="M:Raven.Client.Listeners.IDocumentStoreListener.BeforeStore(System.String,System.Object,Raven.Json.Linq.RavenJObject,Raven.Json.Linq.RavenJObject)">
             <summary>
             Invoked before the store request is sent to the server.
             </summary>
             <param name="key">The key.</param>
             <param name="entityInstance">The entity instance.</param>
             <param name="metadata">The metadata.</param>
+            <param name="original">The original document that was loaded from the server</param>
             <returns>
             Whatever the entity instance was modified and requires us re-serialize it.
             Returning true would force re-serialization of the entity, returning false would 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -46,11 +47,15 @@ namespace EPRacing.Model
 
     public class Product : BaseEntity
     {
+        public Product()
+        {
+            Added = DateTime.Now;
+        }
         public Product(string name,string description,string longdescription,decimal price,int stockamount,string image)
         {
             Name = name;
             Description = description;
-            Longdescription = longdescription;
+            LongDescription = longdescription;
             Price = price;
             StockAmount = stockamount;
             Image = image;
@@ -59,13 +64,22 @@ namespace EPRacing.Model
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Longdescription { get; set; }
+        [DataType(DataType.MultilineText)]
         public string LongDescription { get; set; }
         public decimal Price { get; set; }
         public int StockAmount { get; set; }
         public DateTime Added { get; set; }
         public string Image { get; set; }
 
+        public void Update(Product product)
+        {
+            Name = product.Name;
+            Description = product.Description;
+            LongDescription = product.LongDescription;
+            Price = product.Price;
+            StockAmount = product.StockAmount;
+            Image = product.Image;
+        }
     }
 
     public class BaseEntity

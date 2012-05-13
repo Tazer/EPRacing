@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - EP Racing Admin</title>
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
+    <!--[if IE 6]><script type="text/javascript" src="http://deathtoie6.com/ie6-not-supported.js" ></script><![endif]-->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <a class="brand" href="@Url.Action("Index","Home")">EP Racing Admin</a>
+                            <ul class="nav">
+                                <li class="active">@Html.ActionLink("Hem", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Produkter", "Index", "Product")</li>
+                                <li><a href="/">Till shoppen</a></li>
+                                <li>@Html.ActionLink("Logga ut","LogOff","Login")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span4">
+                <h2>Statistik</h2>
+            </div>
+            <div class="span8">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/modernizr-2.0.6-development-only.js"></script>
+</body>
+</html>
