@@ -73,11 +73,12 @@ namespace EPRacing.Web.Controllers
             Cost = basket.Total - basket.Shipping;
             ExtraCost = basket.Shipping;
             OkUrl = "/Checkout/Receipt/"+ orderId;
-            AgentId = 123;
+            AgentId = 12993;
             Basket = basket;
             BuyerEmail = buyerEmail;
             GuaranteeOffered = 1;
             RefNr = orderId;
+            Key = "d65bfc8d-9655-4536-95a6-41b5d2c11f7a";
         }
     }
 }
