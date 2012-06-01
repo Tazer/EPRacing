@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EPRacing.Model
 {
-   public class User
+   public class User : BaseEntity
     {
        public User()
        {
